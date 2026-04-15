@@ -3,49 +3,47 @@ import Image from "next/image";
 // 將專案資料獨立出來，方便未來編輯與維護
 const projectsData = [
   {
-    id: "bricks",
-    title: "Bricks",
-    year: "2023 - 2024",
-    hoverTitle: "Bricks 模組化設計系統",
-    hoverDesc: "負責統籌開發與 UI 組件庫的建置，透過模組化思維大幅提升團隊設計與工程的協作效率。",
-    // 記得將對應的圖片放入 public 資料夾
-    imgSrc: "/projects/bricks.jpg", 
+    id: "careermonth",
+    title: "2024 政大徵才月",
+    year: "2023-2024",
+    hoverTitle: "政大徵才月 活動主視覺設計",
+    hoverDesc: "負責主導該年度活動主視覺與其他周邊商品的設計，以金屬、酸性風格為主要視覺呈現",
+    imgSrc: "/career.png", 
   },
   {
-    id: "nccu-pass",
-    title: "NCCU Pass",
-    year: "2024 - 2025",
-    hoverTitle: "政大通行證 NCCU Pass",
-    hoverDesc: "從 0 到 1 規劃校園整合 APP，重新梳理學生使用場景，優化選課、地圖與行事曆體驗。",
-    imgSrc: "/projects/nccu-pass.jpg",
+    id: "Open",
+    title: "OpenNCCU",
+    year: "2024-2025",
+    hoverTitle: "OpenNCCU Numo UI",
+    hoverDesc: "(示意圖)學習 Neumorphism 設計，並了解 UI 設計風格演進",
+    imgSrc: "/open.png",
   },
   {
-    id: "virtual-rehearsal",
-    title: "Virtual Rehearsal",
-    year: "2024",
-    hoverTitle: "VR 虛擬演練系統",
-    hoverDesc: "結合虛擬實境技術，打造沉浸式的簡報與面試演練空間，探討人機互動的新模式。",
-    imgSrc: "/projects/virtual.jpg",
+    id: "nanshan",
+    title: "2023 InnoConnect+ 南山人壽組",
+    year: "2023",
+    hoverTitle: "南山健康生活圈 心理測驗",
+    hoverDesc: "負責心理測驗的 UI/UX 設計，幫助南山人壽針對其「健康守護圈」的功能進行推廣",
+    imgSrc: "/nanshan.png",
   },
   {
-    id: "tealepath",
-    title: "Tealepath",
-    year: "2024",
-    hoverTitle: "Tealepath 茶藝心理測驗",
-    hoverDesc: "結合趣味心理測驗與茶文化推廣，設計流暢的互動體驗與視覺動態效果。",
-    imgSrc: "/projects/tealepath.jpg",
+    id: "usr",
+    title: "USR 地方創生",
+    year: "2023",
+    hoverTitle: "素食餐廳線上點餐系統建置",
+    hoverDesc: "本次專案與素食餐廳-素還真合作，主要負責統籌時程與完成各項 APP 功能設計",
+    imgSrc: "/usr.jpg",
   }
 ];
 
-export default function ProjectPage() {
+export default function design() {
   return (
     <div className="animate-fade-in">
       {/* 頁面標題與簡介 */}
-      <h1 className="text-4xl font-bold text-[#2b5ba4] mb-4">Projects</h1>
+      <h1 className="text-4xl font-bold text-[#2b5ba4] mb-4">設計作品 Design</h1>
       <p className="text-gray-700 leading-relaxed mb-10 text-sm md:text-base">
-        These works demonstrate my ability to translate user needs into structured solutions, combining interface design, 
-        system thinking, and practical implementation. From product design to full-stack development, each project reflects a 
-        balance between usability, aesthetics, and real-world application.
+        從小開始喜歡美術繪畫，而之後受過 7 年美術班的訓練也慢慢開始接觸到平面/視覺設計<br/>
+        於是也將這個技能帶進大學，曾參與過校園徵才月視覺設計與 OpenNCCU 的 UI 設計
       </p>
 
       {/* 專案 Grid 列表 */}
@@ -54,23 +52,14 @@ export default function ProjectPage() {
           // 使用 group 類別，讓內部的元素可以追蹤外層卡片的 hover 狀態
           <div 
             key={project.id} 
-            className="group block bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-[0_2px_10px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow duration-300 cursor-pointer"
-          >
+            className="group block bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-[0_2px_10px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+            
+
             {/* 上半部：圖片與 Hover 遮罩 */}
             <div className="relative w-full aspect-video bg-gray-100 overflow-hidden">
-              
-              {/* 專案截圖 (這裡先用純色色塊代替，等你放圖片進去就能顯示) */}
-              <div className="absolute inset-0 bg-gray-200 flex items-center justify-center text-gray-400 text-sm">
-                [圖片佔位] {project.title}
-              </div>
-              {/* 如果你已經把圖片準備好，請解開這段註解並刪除上面的佔位區塊：
-                <Image 
-                  src={project.imgSrc} 
-                  alt={project.title} 
-                  fill 
-                  className="object-cover"
-                /> 
-              */}
+  
+              {/* 專案截圖 */}
+              <Image src={project.imgSrc} alt={project.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover"/> 
 
               {/* 🌟 核心功能：Hover 時的白色半透明遮罩 */}
               <div className="absolute inset-0 bg-white/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center z-10 backdrop-blur-[2px]">
@@ -83,6 +72,7 @@ export default function ProjectPage() {
                 </p>
               </div>
             </div>
+              
 
             {/* 下半部：作品名稱與年份 */}
             <div className="p-4 md:px-5 md:py-4 bg-white border-t border-gray-50 relative z-20">
