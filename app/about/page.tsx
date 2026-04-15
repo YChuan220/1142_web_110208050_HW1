@@ -14,8 +14,10 @@ export default function about() {
         我始終相信努力的過程不會騙你，在未來的某一個瞬間我將會收穫現今努力的美好果實！
       </p>
 
-      {/* 學習經歷區塊 (淺藍底) */}
-      <div className="bg-[#f1f1f1] rounded-2xl p-6 md:p-8 mb-8 border border-blue-50">
+      {/* 學習經歷區塊 (淺藍底) - 向上浮動 + 陰影 */}
+      <div className="bg-[#f1f1f1] rounded-2xl p-6 md:p-8 mb-8 border border-blue-50 
+                      transition-all duration-300 ease-out
+                      hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-100/50">
         <div className="flex items-center gap-2 mb-6">
           <span className="text-xl">📘</span>
           <div>
@@ -23,7 +25,7 @@ export default function about() {
             <p className="text-xs text-gray-500">Education</p>
           </div>
         </div>
-        
+  
         <div className="relative pl-4 border-l-2 border-blue-200 space-y-8">
           <div className="relative">
             <div className="absolute w-3 h-3 bg-gray-500 rounded-full -left-[23px] top-1"></div>
@@ -38,8 +40,10 @@ export default function about() {
         </div>
       </div>
 
-      {/* 工作經歷 (淺藍底) */}
-      <div className="bg-[#eef8ff] rounded-2xl p-6 md:p-8 mb-8 border border-blue-50">
+      {/* 工作經歷 (淺藍底) - 放大 + 陰影 */}
+      <div className="bg-[#eef8ff] rounded-2xl p-6 md:p-8 mb-8 border border-blue-50
+                      transition-all duration-300 ease-out
+                      hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-200/50">
         <div className="flex items-center gap-2 mb-6">
           <span className="text-xl">📘</span>
           <div>
@@ -62,8 +66,10 @@ export default function about() {
         </div>
       </div>
 
-      {/* 專案與活動經歷 (淺紫底) */}
-      <div className="bg-[#f8f5ff] rounded-2xl p-6 md:p-8 border border-purple-50">
+      {/* 專案與活動經歷 (淺紫底) - 向上浮動 + 放大 + 陰影 */}
+      <div className="bg-[#f8f5ff] rounded-2xl p-6 md:p-8 border border-purple-50
+                      transition-all duration-300 ease-out
+                      hover:-translate-y-1 hover:scale-[1.01] hover:shadow-2xl hover:shadow-purple-200/50">
         <div className="flex items-center gap-2 mb-6">
           <span className="text-xl">🏆</span>
           <div>
@@ -96,7 +102,6 @@ export default function about() {
           </div>
         </div>
       </div>
-
     </div>
-  );
+  )
 }

@@ -4,10 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export const navLinks = [
-  { name: "關於我 About me", sub: "教育背景及專案經驗", path: "/about" },
-  { name: "個人興趣 Hobby", sub: "生活的能量來源", path: "/hobby" },
-  { name: "設計作品 Design", sub: "課程設計作品", path: "/design" },
-  { name: "專案經驗 project", sub: "系統/互動作品", path: "/project" },
+  { name: "關於我 About me", sub: "教育背景與經歷簡介", path: "/about" },
+  { name: "個人興趣 Hobby", sub: "嫌嫌沒事的時候在幹嘛", path: "/hobby" },
+  { name: "設計作品 Design", sub: "過去各種 UI 與視覺設計作品", path: "/design" },
+  { name: "專案經驗 Projects", sub: "過去參與過的專案", path: "/project" },
 ];
 
 export default function Sidebar({ onClick }: { onClick?: () => void }) {
