@@ -1,80 +1,94 @@
-import React from "react";
 import Image from "next/image";
 
-const designProjects = [
+// 將專案資料獨立出來，方便未來編輯與維護
+const projectsData = [
   {
-    title: "品牌識別設計",
-    category: "視覺設計",
-    description: "為某品牌設計完整的視覺識別系統，包含 Logo、色彩規範、字體選用等。",
-    tags: ["Branding", "Illustrator", "Photoshop"],
-    image: "/projects/design-1.jpg",
+    id: "bricks",
+    title: "Bricks",
+    year: "2023 - 2024",
+    hoverTitle: "Bricks 模組化設計系統",
+    hoverDesc: "負責統籌開發與 UI 組件庫的建置，透過模組化思維大幅提升團隊設計與工程的協作效率。",
+    // 記得將對應的圖片放入 public 資料夾
+    imgSrc: "/projects/bricks.jpg", 
   },
   {
-    title: "App UI/UX 設計",
-    category: "介面設計",
-    description: "設計一款健康管理 App 的使用者介面，從使用者研究到高擬真原型。",
-    tags: ["Figma", "UI/UX", "Prototype"],
-    image: "/projects/design-2.jpg",
+    id: "nccu-pass",
+    title: "NCCU Pass",
+    year: "2024 - 2025",
+    hoverTitle: "政大通行證 NCCU Pass",
+    hoverDesc: "從 0 到 1 規劃校園整合 APP，重新梳理學生使用場景，優化選課、地圖與行事曆體驗。",
+    imgSrc: "/projects/nccu-pass.jpg",
   },
   {
-    title: "活動主視覺設計",
-    category: "平面設計",
-    description: "為系上年度活動設計主視覺，包含海報、社群素材等延伸應用。",
-    tags: ["Poster", "Illustrator", "Social Media"],
-    image: "/projects/design-3.jpg",
+    id: "virtual-rehearsal",
+    title: "Virtual Rehearsal",
+    year: "2024",
+    hoverTitle: "VR 虛擬演練系統",
+    hoverDesc: "結合虛擬實境技術，打造沉浸式的簡報與面試演練空間，探討人機互動的新模式。",
+    imgSrc: "/projects/virtual.jpg",
   },
+  {
+    id: "tealepath",
+    title: "Tealepath",
+    year: "2024",
+    hoverTitle: "Tealepath 茶藝心理測驗",
+    hoverDesc: "結合趣味心理測驗與茶文化推廣，設計流暢的互動體驗與視覺動態效果。",
+    imgSrc: "/projects/tealepath.jpg",
+  }
 ];
 
-export default function DesignPage() {
+export default function ProjectPage() {
   return (
-    <div className="min-h-screen px-4 py-12 md:px-12 lg:px-20">
-      {/* Page Header */}
-      <div className="mb-12">
-        <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
-          設計專案
-        </h1>
-        <p className="text-[#A0A0C0] text-lg">課程設計作品</p>
-        <div className="w-16 h-1 bg-[#A78BFA] rounded-full mt-4" />
-      </div>
+    <div className="animate-fade-in">
+      {/* 頁面標題與簡介 */}
+      <h1 className="text-4xl font-bold text-[#2b5ba4] mb-4">Projects</h1>
+      <p className="text-gray-700 leading-relaxed mb-10 text-sm md:text-base">
+        These works demonstrate my ability to translate user needs into structured solutions, combining interface design, 
+        system thinking, and practical implementation. From product design to full-stack development, each project reflects a 
+        balance between usability, aesthetics, and real-world application.
+      </p>
 
-      {/* Project Cards */}
-      <div className="space-y-8">
-        {designProjects.map((project, index) => (
-          <div
-            key={index}
-            className="group bg-[#22223A] border border-[#33335A] rounded-2xl overflow-hidden hover:border-[#A78BFA]/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-900/20"
+      {/* 專案 Grid 列表 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {projectsData.map((project) => (
+          // 使用 group 類別，讓內部的元素可以追蹤外層卡片的 hover 狀態
+          <div 
+            key={project.id} 
+            className="group block bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-[0_2px_10px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow duration-300 cursor-pointer"
           >
-            <div className="flex flex-col md:flex-row">
-              {/* Image Placeholder */}
-              <div className="w-full md:w-80 h-48 md:h-auto bg-[#1A1A2E] flex items-center justify-center shrink-0">
-                <div className="text-center">
-                  <span className="text-5xl">🎨</span>
-                  <p className="text-xs text-[#A0A0C0] mt-2">專案圖片</p>
-                </div>
+            {/* 上半部：圖片與 Hover 遮罩 */}
+            <div className="relative w-full aspect-video bg-gray-100 overflow-hidden">
+              
+              {/* 專案截圖 (這裡先用純色色塊代替，等你放圖片進去就能顯示) */}
+              <div className="absolute inset-0 bg-gray-200 flex items-center justify-center text-gray-400 text-sm">
+                [圖片佔位] {project.title}
               </div>
+              {/* 如果你已經把圖片準備好，請解開這段註解並刪除上面的佔位區塊：
+                <Image 
+                  src={project.imgSrc} 
+                  alt={project.title} 
+                  fill 
+                  className="object-cover"
+                /> 
+              */}
 
-              {/* Content */}
-              <div className="flex-1 p-6 md:p-8">
-                <span className="text-xs text-[#A78BFA] font-medium bg-[#A78BFA]/10 px-3 py-1 rounded-full">
-                  {project.category}
-                </span>
-                <h3 className="text-xl font-semibold text-white mt-4 mb-3 group-hover:text-[#A78BFA] transition-colors">
-                  {project.title}
+              {/* 🌟 核心功能：Hover 時的白色半透明遮罩 */}
+              <div className="absolute inset-0 bg-white/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center z-10 backdrop-blur-[2px]">
+                {/* 加入微微往上浮現的動畫 (translate-y)，讓互動更滑順 */}
+                <h3 className="text-xl font-bold text-gray-900 mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  {project.hoverTitle}
                 </h3>
-                <p className="text-sm text-[#A0A0C0] leading-relaxed mb-4">
-                  {project.description}
+                <p className="text-sm text-gray-600 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                  {project.hoverDesc}
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs bg-[#1A1A2E] text-[#E8E8F0] px-3 py-1 rounded-full border border-[#33335A]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
+            </div>
+
+            {/* 下半部：作品名稱與年份 */}
+            <div className="p-4 md:px-5 md:py-4 bg-white border-t border-gray-50 relative z-20">
+              <p className="text-gray-600 italic text-sm md:text-base">
+                {project.title}, {project.year}
+              </p>
             </div>
           </div>
         ))}

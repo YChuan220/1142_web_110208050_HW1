@@ -41,8 +41,6 @@ export default function RootLayout({
               {children}
             </div>
             
-            {/* 如果你想要截圖中那種淡淡的星星背景，可以加上這層 */}
-            {/* <div className="absolute inset-0 pointer-events-none opacity-20 bg-[url('/stars-pattern.png')] bg-cover bg-center mix-blend-multiply z-0"></div> */}
           </main>
           
         </div>
